@@ -5,16 +5,27 @@
  */
 package sptvr19.myschool;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import sptvr19.myschool.entity.Person;
+import Tools.manager.Managers.PersonManager;
+import Tools.manager.Savers.SaveToFile;
 
 /**
  *
  * @author Jegor Bakunin
  */
 class App {
-
+    private Scanner input = new Scanner(System.in);
+    private List<Person> listPersons = new ArrayList<>();
+    private PersonManager personManager = new PersonManager();
+    
+    public App () {
+        SaveToFile saveToFile = new SaveToFile();
+        this.listPersons = saveToFile.loadFromFile("ListPersons");
+    }
     public void run() {
-        Scanner input = new Scanner(System.in);
         boolean repeat = true;
         System.out.println("<--- Моя школа --->");
         do{
@@ -34,14 +45,23 @@ class App {
             String Task = input.nextLine();
             switch(Task){
                 case "0":
-                    System.out.println("\u001B[44m\u001B[31mВыход из программы...");
+                    System.out.println("\033[4;32mВыход из программы...");
                     repeat = false;
                     break;
                 case "1":
                     System.out.println("");
+                    
+                    Person student = personManager.createPerson("STUDENT");
+                    personManager.addPersonToList(student, listPersons);
                     break;
                 case "2":
                     System.out.println("");
+                    for(int i = 0; i < listPersons.size(); i++){
+                        String role = listPersons.get(i).getRole();
+                        if("STUDENT".equals(role)){
+                            System.out.println(listPersons.get(i).getName() + " " + listPersons.get(i).getLastName());
+                        }
+                    }
                     break;
                 case "3":
                     System.out.println("");

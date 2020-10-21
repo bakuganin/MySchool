@@ -5,11 +5,13 @@
  */
 package sptvr19.myschool.entity;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jegor Bakunin
  */
-public class Person {
+public class Person implements Serializable {
     String Name; 
     String LastName;
     String Phone;
