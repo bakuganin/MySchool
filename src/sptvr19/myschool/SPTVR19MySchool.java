@@ -7,7 +7,7 @@ package sptvr19.myschool;
 
 /**
  *
- * @author user
+ * @author Jegor Bakunin
  */
 public class SPTVR19MySchool {
 
@@ -15,7 +15,7 @@ public class SPTVR19MySchool {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        App app = new app;
+        App app = new App();
         app.run();
     }
     
